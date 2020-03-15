@@ -1,13 +1,8 @@
 {% extends "layout.html" %}
 
-{% block body %}***
-<script>
-    function changeImage(x,meal){
-    let change = document.querySelector('#' + meal + '_image').src="/static/img/meal/" + x + ".png";
-}
-</script>
+{% block body %}
 <div class="best_burgers_area">
-        <div class="container">
+    <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section_title text-center mb-80">
@@ -16,167 +11,213 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="{{ url_for('static', filename='img/meal/1.png') }}" id="base_image">
-                        </div>
-                        <div class="info">
-                        <h3>Base</h3>
-                                {% for base in bases %}
-                                    <p align="right" onmouseover="changeImage({{ base.id }},'base')">    {{ base.item_name }} <input type="radio" name="base" value="{{ base.id }}" onclick="changeImage({{ base.id }},'base')"></p>
-                                {% endfor %}
-
-                            <span>$5</span>
-                        </div>
-                    </div>
-                </div>
-                <!--------------------------------->
-                <div class="col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="{{ url_for('static', filename='img/meal/2.png') }}" id="protein_image">
-                        </div>
-                        <div class="info">
-                            <h3>Protein</h3>
-                                {% for protein in proteins %}
-                                 <p align="right" onmouseover="changeImage({{ protein.id }}, 'protein')">   {{ protein.item_name }} <input type="radio" name="protein" value="{{ protein.id }}" onclick="changeImage({{ protein.id }},'protein')"></p>
-                                {% endfor %}
-                            <span>$5</span>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-            </div>
 
             <div class="row">
-                <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="{{ url_for('static', filename='img/meal/3.png') }}" id="side_image">
-                        </div>
-                        <div class="info">
-                        <h3>Side dish</h3>
-                                {% for side in sides %}
-                                 <p align="right" onmouseover="changeImage({{ side.id }},'side')">   {{ side.item_name }}  <input type="radio" name="side" value="{{ side.id }}" onclick="changeImage({{ side.id }},'side')"> </p>
-                                {% endfor %}
-                            <span>$5</span>
-                        </div>
+                <div class="col-lg-12">
+                    <div class="card-subtitle">
+                        <h2>Place your order</h2><br>
                     </div>
                 </div>
-                <!--------------------------------->
-                <div class="col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="{{ url_for('static', filename='img/meal/1.png') }}" id="dessert_image">
-                        </div>
-                        <div class="info">
-                            <h3>Dessert</h3>
-                                {% for dessert in desserts %}
-                                 <p align="right" onmouseover="changeImage({{ dessert.id }},'dessert')">   {{ dessert.item_name }}  <input type="radio" name="dessert" value="{{ dessert.id }}" onclick="changeImage({{ dessert.id }}),'dessert'"></p>
-                                {% endfor %}
-
-                            <span>$5</span>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="iteam_links">
-                        <a class="boxed-btn5" href="Menu.html">More Items</a>
+                     <div class="card-subtitle">
+                         <h3>Select your Maincourse(base)</h3>
+                     </div>
+                 </div>
+            </div>
+            <div class="row">
+                {% for base in bases %}
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget text-center ">
+                            <p><img src="static/img/meal/{{base.id}}.png" id="base_image"></p>
+                            <h3 class="footer_title pos_margin">
+                                    <input class="primary-radio" type="radio" id="base_{{ base.id }}" name="base_id" value="{{ base.id }}"> {{ base.item_name}}
+                            </h3><p>{{ base.item_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                     <div class="card-subtitle">
+                         <h3>Select your Topping (protein)</h3>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="row">
+                {% for protein in proteins %}
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget text-center ">
+                            <p><img src="static/img/meal/{{protein.id}}.png" id="base_image"></p>
+                            <h3 class="footer_title pos_margin">
+                                    <input class="primary-radio" type="radio" id="protein_{{ protein.id }}" name="protein_id" value="{{ protein.id }}"> {{ protein.item_name}}
+                            </h3><p>{{ protein.item_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                     <div class="card-subtitle">
+                         <h3>Select two sides</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for side in sides %}
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget text-center ">
+                            <p><img src="static/img/meal/{{side.id}}.png" id="side_image"></p>
+                            <h3 class="footer_title pos_margin">
+                                    <input class="primary-checkbox" type="checkbox" id="side_{{ side.id }}" name="side_id" value="{{ side.id }}"> {{ side.item_name}}
+                            </h3><p>{{ side.item_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12">
+                     <div class="card-subtitle">
+                         <h3>Select your dessert</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for dessert in desserts %}
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget text-center ">
+                            <p><img src="static/img/meal/{{dessert.id}}.png" id="dessert_image"></p>
+                            <h3 class="footer_title pos_margin">
+                                    <input class="primary-radio" type="radio" id="dessert_{{ dessert.id }}" name="dessert_id" value="{{ dessert.id }}"> {{ dessert.item_name}}
+                            </h3><p>{{ dessert.item_description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" id="add_lunch" class="button button-contactForm boxed-btn" onclick="addToCart()">Submit</button>
+            </div>
 
-    <!------------------------------>
-    <!-- features_room_startt -->
-    <div class="Burger_President_area">
-            <div class="Burger_President_here">
-                <div class="single_Burger_President">
-                    <div class="room_thumb">
-                        <img src="img/burgers/1.png" alt="">
-                        <div class="room_heading d-flex justify-content-between align-items-center">
-                            <div class="room_heading_inner">
-                                <span>$20</span>
-                                <h3>The Burger President</h3>
-                                <p>Great way to make your business appear trust <br> and relevant.</p>
-                                <a href="#" class="boxed-btn3">Order Now</a>
+        <br>
+
+                <div class="progress-table-wrap">
+					<div id="js_body" class="progress-table">
+						<div class="table-head">
+							<div class="visit"></div>
+							<div class="percentage">Details</div>
+							<div class="country">Price</div>
+							<div class="serial">Qty</div>
+							<div class="visit"></div>
+						</div>
+
+                        {% for item in items %}
+
+				        <div id="{{item.id}}" class="table-row">
+					        <div class="visit"><button class="genric-btn primary-border" onClick="removeCartItem({{item.id}})">Remove</button></div>
+                            <div class="percentage">{{ item.base_name }}, {{item.protein_name}}, {{item.side1_name}} {{item.side2_name}}, {{item.dessert_name}}</div>
+					        <div class="country">{{ price.amount }}</div>
+                            <div class="serial"><input type="text" size="2" maxlength="2" id="quantity{{item.id}}" name="quantity{{item.id}}" value="1"></div>
+					        <div class="visit"><button class="genric-btn primary-border" onClick="updateCartItem({{item.id}})">Update</button></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+        </br>
+        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+
+            <div class="row">
+                    <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="float-sm-left">
+                                        Select Delivery Time
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <select class="form-control" name="delivery_time">
+                                            <option value="A">11:30am - 12 Noon</option>
+                                            <option value="B">12 noon - 12:30pm</option>
+                    `                       <option value="C">12:30pm - 1pm</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" name="full_name" id="full_name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your Name'" placeholder="Your Name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="mobile_number" id="mobile_number" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mobile Number'" placeholder="Mobile Number">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" name="address1" id="address1" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Street Address'" placeholder="Street Address">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" name="address2" id="address2" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Street Address2'" placeholder="Street Address2">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="city" id="city" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'" placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="town" id="town" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Town'" placeholder="Town">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="post_code" id="town" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Post Code'" placeholder="Post Code">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control valid" name="post_code" id="town" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Post Code'" placeholder="Post Code">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="button button-contactForm boxed-btn">Submit</button>
                             </div>
 
-                        </div>
+
                     </div>
-                </div>
-                <div class="single_Burger_President">
-                    <div class="room_thumb">
-                        <img src="img/burgers/2.png" alt="">
-                        <div class="room_heading d-flex justify-content-between align-items-center">
-                            <div class="room_heading_inner">
-                                <span>$20</span>
-                                <h3>The Burger President</h3>
-                                <p>Great way to make your business appear trust <br> and relevant.</p>
-                                <a href="#" class="boxed-btn3">Order Now</a>
+
+                    <div class="col-lg-3 offset-lg-1">
+                        <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <div class="media-body">
+                                Asif
                             </div>
                         </div>
+
                     </div>
-                </div>
-            </div>
-        </div>
-        <!-- features_room_end -->
-    <!-- about_area_start -->
-    <div class="about_area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6 col-lg-6 col-md-6">
-                        <div class="about_thumb2">
-                            <div class="img_1">
-                                <img src="img/about/1.png" alt="">
-                            </div>
-                            <div class="img_2">
-                                <img src="img/about/2.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-5 offset-lg-1 col-md-6">
-                        <div class="about_info">
-                            <div class="section_title mb-20px">
-                                <span>About Us</span>
-                                <h3>Best Burger <br>
-                                        in your City</h3>
-                            </div>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate</p>
-                            <div class="img_thumb">
-                                <img src="img/jessica-signature.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- about_area_end -->
-    <!-- video_area_start -->
-    <div class="video_area video_bg overlay">
-        <div class="video_area_inner text-center">
-            <h3>Burger <br>
-                Bachelor</h3>
-            <span>How we make delicious Burger</span>
-            <div class="video_payer">
-                <a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" class="video_btn popup-video">
-                    <i class="fa fa-play"></i>
-                </a>
-            </div>
-        </div>
+             </div>
+        </form>
     </div>
-    <!-- video_area_end -->
+        </section>
+</div>
+
 
 {% endblock %}

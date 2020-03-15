@@ -3688,24 +3688,28 @@ h6 {
 
 /* line 361, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_elements.scss */
 .progress-table .serial {
-  width: 11.83%;
-  padding-left: 30px;
+  width: 8%;
+  padding-left: 10px;
+  padding-left: 10px;
 }
 
 /* line 365, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_elements.scss */
 .progress-table .country {
-  width: 28.07%;
+  width: 10%;
 }
 
 /* line 368, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_elements.scss */
 .progress-table .visit {
-  width: 19.74%;
+  width: 10%;
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 /* line 371, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_elements.scss */
 .progress-table .percentage {
-  width: 40.36%;
+  width: 60%;
   padding-right: 50px;
+  padding-left: 10px;
 }
 
 /* line 375, ../../Arafath/CL/December/229. Restaurant (Burger)/HTML/scss/_elements.scss */
